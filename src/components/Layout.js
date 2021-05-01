@@ -9,7 +9,7 @@ import { apiActions } from '../store/ApiSlice';
 const Layout = () => {
 	const classes = useStyles();
 	//const [category, setCategory] = useState('Devops');
-	const [category, setCategory] = useState('');
+	const [category, setCategory] = useState('Networking');
 	const [Questions, setQuestions] = useState('');
 	const [difficulty, setDifficulty] = useState('');
 	const [fetch, setFetch] = useState(false);
@@ -30,14 +30,14 @@ const Layout = () => {
 					},
 				});
 				console.log(data);
-                dispatch(apiActions.start(data));
-            
+				dispatch(apiActions.start(data));
 			} catch (error) {
 				console.log(error);
 			}
 		};
 
-		if (fetch) {
+		if (fetch && Questions && difficulty && category) {
+			console.log('this');
 			fetchData();
 		}
 	}, [fetch]);
@@ -53,6 +53,9 @@ const Layout = () => {
 						<CardContent>
 							<Grid>
 								<Grid item className={classes.new}>
+									<Typography>
+										<h3 style={{ color: 'white' }}>*This is a single Option Correct Quiz</h3>
+									</Typography>
 									<div>
 										<Typography variant="h6">Category</Typography>
 										<select
