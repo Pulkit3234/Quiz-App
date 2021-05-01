@@ -5,12 +5,12 @@ const Header = () => {
 		<AppBar position="static">
 			<Toolbar>
 				<IconButton edge="start" color="inherit" aria-label="menu">
-					
-						<i class="fas fa-book-open" style={{ color: 'yellow' }}></i>
-				
+					<i class="fas fa-book-open" style={{ color: 'yellow' }}></i>
 				</IconButton>
 
-				<Typography variant="h6">Quiz App</Typography>
+				<Typography variant="h5" style={{ fontWeight: 'bold' }}>
+					Quizify
+				</Typography>
 			</Toolbar>
 		</AppBar>
 	);

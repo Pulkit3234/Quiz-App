@@ -1,8 +1,10 @@
 import { Container, Card, CardHeader, CardContent, Checkbox, Button } from '@material-ui/core';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
+import { apiActions } from '../store/ApiSlice';
 
 const Quiz = () => {
+	console.log('hi');
 	const [index, setIndex] = useState(0);
 	const [checked, setChecked] = useState(false);
 	const [option, setOption] = useState({
@@ -12,9 +14,9 @@ const Quiz = () => {
 		d: false,
 	});
 	const [correct, setCorrect] = useState('');
-    const [score, setScore] = useState(0);
-    
-    const { data } = useSelector((state) => state.api);
+	const [score, setScore] = useState(0);
+
+	const { data } = useSelector((state) => state.api);
 
 	const dispatch = useDispatch();
 
@@ -30,11 +32,13 @@ const Quiz = () => {
 				count++;
 			}
 		}
-		if (count > 1) {
+		if (count > 2) {
 			return;
 		}
 		const value = !option[e.target.name];
-		setOption({ ...option, [e.target.name]: value });
+		
+		console.log(value);
+		setOption({ a: false, b: false, c: false, d: false, [e.target.name]: value });
 	};
 
 	const forwardClickHandler = () => {
@@ -55,14 +59,17 @@ const Quiz = () => {
 		}
 	};
 
-	
-
-
-	if (index === data.length) {
+	const againQuizHandler = () => {
+		dispatch(apiActions.restart());
+	};
+	if (index === data?.length) {
 		return (
 			<>
-                <h2>Thanks For Taking the Quiz</h2>
-                <p>{score}</p>
+				<h2>Thanks For Taking the Quiz</h2>
+				<p>{score}</p>
+				<Button variant="contained" color="primary" onClick={againQuizHandler}>
+					Take Quiz Again
+				</Button>
 			</>
 		);
 	}
@@ -123,12 +130,12 @@ const Quiz = () => {
 							<Button
 								variant="contained"
 								color="secondary"
-								onClick={() => setIndex((prevState) => forwardClickHandler())}
+								onClick={ forwardClickHandler}
 							>
 								Submit Quiz
 							</Button>
 						) : (
-							<Button variant="contained" color="primary" onClick={() => forwardClickHandler()}>
+							<Button variant="contained" color="primary" onClick={forwardClickHandler}>
 								Next Question
 							</Button>
 						)}

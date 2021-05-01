@@ -1,4 +1,4 @@
-import { Container, Card, Typography, Grid, CardContent, Button, TextField, MenuItem } from '@material-ui/core';
+import { Card, Typography, Grid, CardContent, Button, MenuItem } from '@material-ui/core';
 import classe from './Layout.module.css';
 import useStyles from './style';
 import { useState, useEffect } from 'react';
@@ -9,7 +9,7 @@ import { apiActions } from '../store/ApiSlice';
 const Layout = () => {
 	const classes = useStyles();
 	//const [category, setCategory] = useState('Devops');
-	const [category, setCategory] = useState('Networking');
+	const [category, setCategory] = useState('');
 	const [Questions, setQuestions] = useState('');
 	const [difficulty, setDifficulty] = useState('');
 	const [fetch, setFetch] = useState(false);
@@ -29,16 +29,18 @@ const Layout = () => {
 						difficulty,
 					},
 				});
+
 				console.log(data);
 				dispatch(apiActions.start(data));
 			} catch (error) {
 				console.log(error);
+				setFetch(false);
 			}
 		};
 
-		if (fetch && Questions && difficulty && category) {
-			console.log('this');
+		if (difficulty && category) {
 			fetchData();
+			console.log('clicked');
 		}
 	}, [fetch]);
 
@@ -64,13 +66,11 @@ const Layout = () => {
 											style={{ width: '40%' }}
 											onClick={(e) => setCategory(e.target.value)}
 										>
-											<option value="Linux">Linux</option>
+											<option value="Docker">Docker</option>
 											<option value="Devops">Devops</option>
-											<option value="Programming" selected>
-												Programming
+											<option value="Linux" selected>
+												Linux
 											</option>
-											<option value="Cloud">Cloud</option>
-											<option value="Kubernetes">Kubernetes</option>
 										</select>
 									</div>
 								</Grid>
@@ -84,6 +84,7 @@ const Layout = () => {
 									>
 										<Typography variant="h6">No of Questions</Typography>
 										<input
+											min="1"
 											type="number"
 											id="noofq"
 											style={{ width: '40%' }}
