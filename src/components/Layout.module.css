@@ -1,0 +1,17 @@
+.body {
+	display: flex;
+	flex-direction: row;
+
+	justify-content: center;
+	height: 60vh;
+
+	background-color: red;
+}
+
+.style {
+	width: 20%;
+}
+
+.new {
+	margin-bottom: 20px;
+}
