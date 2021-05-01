@@ -48,7 +48,7 @@ const Layout = () => {
 				<Grid item xs={6}>
 					<Card color="primary" className={classes.card}>
 						<Typography variant="h6" className={classes.typography}>
-							<h1 style={{ color: 'white' }}>Quiz Setup</h1>
+							<h1 style={{ color: 'white' }}> Setup Quiz</h1>
 						</Typography>
 						<CardContent>
 							<Grid>
@@ -66,10 +66,10 @@ const Layout = () => {
 										>
 											<option value="Linux">Linux</option>
 											<option value="Devops">Devops</option>
-											<option value="Networking" selected>
-												Networking
+											<option value="Programming" selected>
+												Programming
 											</option>
-											<option value="Javascript">Javascript</option>
+											<option value="Cloud">Cloud</option>
 											<option value="Kubernetes">Kubernetes</option>
 										</select>
 									</div>
