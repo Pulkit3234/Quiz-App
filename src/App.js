@@ -3,6 +3,7 @@ import Layout from './components/Layout';
 import Quiz from './components/Quiz';
 import { useSelector } from 'react-redux';
 
+
 function App() {
 	const { startQuiz } = useSelector((state) => state.api);
 
@@ -10,6 +11,7 @@ function App() {
 		<>
 			<Header />
 			{startQuiz ? <Quiz /> : <Layout />}
+			
 		</>
 	);
 }

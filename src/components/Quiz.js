@@ -2,6 +2,7 @@ import { Container, Card, CardHeader, CardContent, Checkbox, Button } from '@mat
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { apiActions } from '../store/ApiSlice';
+import PieChart from './PieChart';
 
 const Quiz = () => {
 	console.log('hi');
@@ -36,7 +37,7 @@ const Quiz = () => {
 			return;
 		}
 		const value = !option[e.target.name];
-		
+
 		console.log(value);
 		setOption({ a: false, b: false, c: false, d: false, [e.target.name]: value });
 	};
@@ -65,11 +66,30 @@ const Quiz = () => {
 	if (index === data?.length) {
 		return (
 			<>
-				<h2>Thanks For Taking the Quiz</h2>
-				<p>{score}</p>
-				<Button variant="contained" color="primary" onClick={againQuizHandler}>
-					Take Quiz Again
-				</Button>
+				<div
+					style={{
+						display: 'flex',
+						flexDirection: 'column',
+						alignItems: 'center',
+						justifyContent: 'space-between',
+						padding: '40px',
+					}}
+				>
+					<div style={{ marginBottom: '30px' }}>
+						<h2>
+							Thanks For Taking the Quiz <i class="far fa-smile"></i>
+						</h2>
+					</div>
+					<div style={{ marginBottom: '40px', height: '400px', width: '400px' }}>
+						<PieChart score={score} />
+					</div>
+
+					<div>
+						<Button variant="contained" color="primary" onClick={againQuizHandler}>
+							Take Quiz Again
+						</Button>
+					</div>
+				</div>
 			</>
 		);
 	}
@@ -127,11 +147,7 @@ const Quiz = () => {
 					</CardContent>
 					<CardContent>
 						{index === data.length - 1 ? (
-							<Button
-								variant="contained"
-								color="secondary"
-								onClick={ forwardClickHandler}
-							>
+							<Button variant="contained" color="secondary" onClick={forwardClickHandler}>
 								Submit Quiz
 							</Button>
 						) : (
@@ -147,3 +163,4 @@ const Quiz = () => {
 };
 
 export default Quiz;
+//style={{ height: '400px', width: '400px', position: 'absolute', left: '36%', top: '25%' }}

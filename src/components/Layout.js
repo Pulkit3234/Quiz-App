@@ -38,9 +38,10 @@ const Layout = () => {
 			}
 		};
 
-		if (difficulty && category) {
+		if (difficulty && Questions) {
 			fetchData();
 			console.log('clicked');
+			
 		}
 	}, [fetch]);
 
