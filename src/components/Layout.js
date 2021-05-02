@@ -1,5 +1,4 @@
-import { Card, Typography, Grid, CardContent, Button, MenuItem } from '@material-ui/core';
-import classe from './Layout.module.css';
+import { Card, Typography, Grid, CardContent, Button } from '@material-ui/core';
 import useStyles from './style';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
@@ -38,12 +37,12 @@ const Layout = () => {
 			}
 		};
 
-		if (difficulty && Questions) {
+		if (fetch&&difficulty && Questions) {
 			fetchData();
 			console.log('clicked');
 			
 		}
-	}, [fetch]);
+	}, [fetch,dispatch,difficulty,Questions,category]);
 
 	return (
 		<div className={classes.body}>
@@ -57,7 +56,7 @@ const Layout = () => {
 							<Grid>
 								<Grid item className={classes.new}>
 									<Typography>
-										<h3 style={{ color: 'white' }}>*This is a single Option Correct Quiz</h3>
+										<h3 style={{ color: 'white' }}>*This is a Single Option Correct Quiz</h3>
 									</Typography>
 									<div>
 										<Typography variant="h6">Category</Typography>

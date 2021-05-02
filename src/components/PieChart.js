@@ -15,7 +15,7 @@ const PieChart = ({ score }) => {
 							label: ['correct Score', 'Incorrect'],
 							data: [score, incorrect],
 							backgroundColor: ['green', 'red'],
-							borderColor: ['red', 'yellow'],
+							borderColor: ['lightgreen', 'yellow'],
 						},
 					],
 				}}

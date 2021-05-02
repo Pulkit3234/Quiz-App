@@ -7,14 +7,14 @@ import PieChart from './PieChart';
 const Quiz = () => {
 	console.log('hi');
 	const [index, setIndex] = useState(0);
-	const [checked, setChecked] = useState(false);
+	
 	const [option, setOption] = useState({
 		a: false,
 		b: false,
 		c: false,
 		d: false,
 	});
-	const [correct, setCorrect] = useState('');
+	
 	const [score, setScore] = useState(0);
 
 	const { data } = useSelector((state) => state.api);
@@ -53,7 +53,7 @@ const Quiz = () => {
 	};
 
 	const backwardClickHandler = () => {
-		setChecked(false);
+		
 		setIndex((prevState) => prevState - 1);
 		for (let value in option) {
 			option[value] = false;
@@ -96,9 +96,7 @@ const Quiz = () => {
 
 	const {
 		answers: { answer_a, answer_b, answer_c, answer_d },
-		correct_answers: { answer_a_correct, answer_b_correct, answer_c_correct, answer_d_correct },
 		question,
-		multiple_correct_answers,
 		correct_answer,
 	} = data[index];
 
